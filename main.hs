@@ -14,6 +14,7 @@ import Data.Text.Lazy (Text)
 import qualified Data.Text.Lazy as Text
 import Data.Text.Lazy.Encoding
 import Network.Wai.Middleware.RequestLogger
+import System.Environment (getArgs)
 import Web.Scotty.Trans
 
 type Channel = Chan Text
@@ -31,13 +32,15 @@ chat = lift
 
 main :: IO ()
 main = do
+  port <- read . head <$> getArgs
+
   initialChannels <- newTVarIO def
 
   let runM m = runReaderT (runChat m) initialChannels
       initM = runM
       runActionToIO = runM
 
-  scottyT 4321 initM runActionToIO $ do
+  scottyT port initM runActionToIO $ do
     middleware logStdoutDev
     app
 
