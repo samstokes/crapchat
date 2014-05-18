@@ -1,11 +1,11 @@
-name:                scotty-chat
+name:                crapchat
 version:             0.1.0.0
 author:              Sam Stokes
 maintainer:          me@samstokes.co.uk
 build-type:          Simple
 cabal-version:       >=1.10
 
-executable scotty-chat
+executable crapchat
   main-is:             main.hs
   build-depends:       base >=4.5 && <4.6
                      , containers
