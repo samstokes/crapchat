@@ -7,11 +7,11 @@ cabal-version:       >=1.10
 
 executable crapchat
   main-is:             main.hs
-  build-depends:       base >=4.5 && <4.6
+  build-depends:       base
                      , containers
                      , data-default
                      , mtl
-                     , scotty
+                     , scotty >= 0.7.2
                      , stm
                      , text
                      , transformers
